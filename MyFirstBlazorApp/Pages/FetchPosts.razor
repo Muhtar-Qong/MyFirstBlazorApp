@@ -1,0 +1,41 @@
+﻿@page "/fetchposts"
+@inject PostService postService
+
+<h3>Posts</h3>
+
+@if(posts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in posts)
+            {
+                <tr>
+                    <td>@post.UserId</td>
+                    <td>@post.Title</td>
+                    <td>@post.Body</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private Post[]? posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await postService.GetPostsAsync();
+    }
+}

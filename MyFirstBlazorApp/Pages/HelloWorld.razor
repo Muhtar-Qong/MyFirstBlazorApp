@@ -1,0 +1,12 @@
+﻿@page "/helloworld"
+@inject GreetingService greetingService
+
+<h3>Hello, Blazor!</h3>
+
+<p>Welcome to my first Blazor WebAssembly app!</p>
+
+<p>@greetingService.GetGreeting()</p>
+
+@code {
+   
+}
